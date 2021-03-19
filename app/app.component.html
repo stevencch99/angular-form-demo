@@ -1,0 +1,32 @@
+<hello name="{{ name }}"></hello>
+<p>
+  Differences between using <code>value</code> and <code>ngValue</code> in form <code>select</code> dropdowns.
+</p>
+
+  <h3>Using <code>value</code></h3>
+  <form [formGroup]="formModel">
+    <select formControlName="apply_to" >
+      <option [value]="null">All nodes</option>
+      <option *ngFor="let node of nodes" [value]="node.id">
+        {{ node.id }} - {{ node.name }}
+      </option>
+    </select>
+  </form>
+  
+
+  {{ formModel.value | json }}
+
+  <hr>
+
+  <h3>Using <code>ngValue</code></h3>
+  <form [formGroup]="formModelB">
+    <select formControlName="apply_to" >
+      <option [ngValue]="null">All nodes</option>
+      <option *ngFor="let node of nodes" [ngValue]="node.id">
+        {{ node.id }} - {{ node.name }}
+      </option>
+    </select>
+  </form>
+  
+
+  {{ formModelB.value | json }}
